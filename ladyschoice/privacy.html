@@ -22,7 +22,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">The Lady's Choice — last updated September 22, 2026</p>
+<p class="updated">The Lady's Choice — last updated September 23, 2026</p>
 
 <p>This policy explains what The Lady's Choice ("the app") collects, where it goes, and how
 to get rid of it. It is written against what the app actually does rather than from a
@@ -32,6 +32,9 @@ template. The app is operated by Nicholas Bell ("we", "us").</p>
 <ul>
   <li>We store what you put into the app: your intake answers, the people you add, your notes
       about them, your conversations, screenshots you upload, and your Vision boards.</li>
+  <li><strong>Stylist does not keep your outfit photos.</strong> The photo is analysed and
+      then discarded — we never write it to storage. What we keep is the written description
+      of the outfit.</li>
   <li>We use one AI provider, <strong>Anthropic (Claude)</strong>. Your content is sent to it
       to produce the reads, analyses and replies. It is not used to train AI models.</li>
   <li>Once each night the app sends your stored roster notes to Anthropic to refresh its
@@ -88,10 +91,24 @@ scores and improvement notes, your Concierge venue queries and the responses, sc
 upload to Intel together with the resulting analysis, any comparisons or reads you generate,
 and the images and text you place on your Vision boards.</p>
 
+<h3>Stylist</h3>
+<p>When you use Stylist we store the occasion you describe and the surrounding detail you give
+about it, the conversation itself, and — for each outfit you show it — a written description of
+what you were wearing, the assessment of it, the garments and colours it identified, and its
+verdict.</p>
+<p><strong>We do not keep the photograph.</strong> The image is resized on your device, sent to
+our AI provider to be read, and discarded when that request finishes. It is never written to
+our file storage, so there is no stored photo to delete later, to leak, or to hand over. The
+written description is what takes its place, and it is what the app reads when it refers back
+to how you usually dress.</p>
+<p>Those descriptions accumulate into a picture of your style, which is used to give more
+useful advice over time — noticing when something is a departure, or referring back to an
+outfit you wore before.</p>
+
 <h3>Usage</h3>
 <p>We count how many times you use metered features (Assistant sessions, Intel uploads,
-Concierge lookups) so that plan limits can be enforced. We record whether you accepted the AI
-disclosure, and when.</p>
+Concierge lookups, Stylist conversations and Stylist outfit reads) so that plan limits can be
+enforced. We record whether you accepted the AI disclosure, and when.</p>
 
 <h3>What we do not collect</h3>
 <p>The app contains no analytics, advertising, attribution, tracking or crash-reporting
@@ -108,11 +125,11 @@ the feature that needs it.</p>
         <td>"We use your location to find great date spots near you."</td>
         <td>Your coordinates are sent to Google Places to rank venues by distance. We do not keep a location history.</td></tr>
     <tr><td>Camera</td>
-        <td>"Take a photo of a conversation so Intel can tell you what it shows."</td>
-        <td>Capturing an image to upload to Intel.</td></tr>
+        <td>"Take a photo of a conversation for Intel to read, or of an outfit for Stylist to look at."</td>
+        <td>Capturing an image to send to Intel or Stylist. Stylist's photo is not stored — see section 1.</td></tr>
     <tr><td>Photo library</td>
-        <td>"Your photo library is used for screenshots you send to Intel, and for pictures you add to your Vision boards."</td>
-        <td>Selecting images for Intel analysis or Vision boards. We access only the images you pick.</td></tr>
+        <td>"Your photo library is used for screenshots you send to Intel, outfit photos you show Stylist, and pictures you add to your Vision boards."</td>
+        <td>Selecting images for Intel, Stylist or Vision boards. We access only the images you pick.</td></tr>
   </tbody>
 </table>
 
@@ -123,16 +140,19 @@ data is stored in the United States and is not transferred outside it.</p>
 <p>Every table carries row-level security, so a signed-in account can read and write only its
 own rows. Uploaded images live in two private storage buckets, <code>intel-screenshots</code>
 and <code>vision-images</code>, which are not publicly readable and are keyed by your user ID
-under the same rules.</p>
+under the same rules. Stylist has no bucket at all, because it stores no photographs.</p>
 <p>Traffic between the app and our servers uses HTTPS. Calls to AI and venue services are made
 from our server-side functions, so provider API keys are never shipped inside the app.</p>
 
 <h2 id="ai">4. AI processing</h2>
 <p>The Lady's Choice uses a third-party AI provider, Anthropic (Claude). It reads what you
 share and writes what comes back.</p>
-<p>When you use the Assistant, Concierge, Intel, or Roleplay, the content you share — your
-messages, uploaded screenshots, notes, and roleplay conversations — is sent to Anthropic to
-produce the read, the analysis, or the reply.</p>
+<p>When you use the Assistant, Concierge, Intel, Roleplay, or Stylist, the content you share
+— your messages, uploaded screenshots, outfit photos, notes, and roleplay conversations — is
+sent to Anthropic to produce the read, the analysis, or the reply.</p>
+<p>An outfit photo is sent to Anthropic to be read and is not stored by us at any point. We
+cannot delete a copy held by our AI provider; their own retention governs that, as it does for
+everything else we send them.</p>
 <p>Separately, the app refreshes its summaries on a nightly schedule. At approximately 3:00 AM
 and 4:00 AM UTC each day, the notes, extracted facts and existing summaries held against the
 people on your roster are sent to Anthropic to be rewritten. This happens automatically,
@@ -163,7 +183,7 @@ not upload someone else's private messages or images if you do not have the righ
         <td>Everything described in section 1 — it hosts the database, authentication and image storage.</td>
         <td>Hosting and storage.</td></tr>
     <tr><td>Anthropic (Claude)</td>
-        <td>Your messages, uploaded screenshots, notes, roleplay conversations, and the names and notes held against people on your roster.</td>
+        <td>Your messages, uploaded screenshots, outfit photos, notes, roleplay conversations, and the names and notes held against people on your roster.</td>
         <td>Generating reads, analyses and replies.</td></tr>
     <tr><td>Google Places</td>
         <td>Your venue search text and, if you grant location access, your coordinates.</td>
@@ -190,7 +210,8 @@ storage buckets, then deletes your authentication record, which cascades through
 and removes every row belonging to you — your profile and intake answers, everyone on your
 roster together with all notes, facts and summaries about them, your Assistant sessions and
 messages, Intel analyses, Roleplay sessions, Concierge queries, daily briefs and challenges,
-score history, comparisons and reads, Vision boards and layers, usage counters, and feedback.</p>
+score history, comparisons and reads, Vision boards and layers, your Stylist conversations and
+every outfit description and assessment in them, usage counters, and feedback.</p>
 <p>Two details matter, and we would rather state them plainly than imply the erasure is more
 absolute than it is:</p>
 <ul>
@@ -198,6 +219,10 @@ absolute than it is:</p>
       from backups, so once the deletion removes your Intel screenshots and Vision board
       images there is no copy of them anywhere in our systems and they cannot be recovered,
       by you or by us.</li>
+  <li><strong>Stylist's outfit photos were never there to delete.</strong> They are discarded
+      the moment the analysis finishes and are never written to storage, so account deletion
+      has nothing to remove. The written descriptions are database rows and follow the rule
+      below.</li>
   <li><strong>Database records persist in backups for up to seven days.</strong> We take a
       daily backup of the database and keep each one for seven days. We do not use
       point-in-time recovery. Your rows are removed from the live database the moment you
@@ -227,8 +252,9 @@ for doing so.</p>
 display name); personal information under Cal. Civ. Code &sect;1798.80 (date of birth);
 commercial information (subscription tier and feature usage); geolocation data (only while you
 are using the venue finder, and only with your permission); audio, electronic and visual
-information (screenshots and images you upload); and inferences drawn from your own content
-(confidence scores and relationship summaries).</p>
+information (screenshots and images you upload, and outfit photos, which are processed and discarded
+rather than stored); and inferences drawn from your own content (confidence scores,
+relationship summaries, and descriptions of your style).</p>
 <p><strong>Sale or sharing.</strong> We do not sell personal information and we do not share
 it for cross-context behavioural advertising. We have not done so in the preceding twelve
 months.</p>
