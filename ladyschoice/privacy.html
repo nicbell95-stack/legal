@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — The Gentlemen's Playbook</title>
+<title>Privacy Policy — The Lady's Choice</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
          line-height: 1.6; max-width: 820px; margin: 0 auto; padding: 24px; color: #222; }
@@ -22,27 +22,27 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">The Gentlemen's Playbook — last updated September 22, 2026</p>
+<p class="updated">The Lady's Choice — last updated September 22, 2026</p>
 
-<p>This policy explains what The Gentlemen's Playbook ("the app") collects, where it goes, and
-how to get rid of it. It is written against what the app actually does rather than from a
+<p>This policy explains what The Lady's Choice ("the app") collects, where it goes, and how
+to get rid of it. It is written against what the app actually does rather than from a
 template. The app is operated by Nicholas Bell ("we", "us").</p>
 
 <h2>Summary of key points</h2>
 <ul>
   <li>We store what you put into the app: your intake answers, the people you add, your notes
-      about them, your Advisor conversations, and screenshots you upload for analysis.</li>
+      about them, your conversations, screenshots you upload, and your Vision boards.</li>
   <li>We use one AI provider, <strong>Anthropic (Claude)</strong>. Your content is sent to it
-      to generate coaching, analysis and responses. It is not used to train AI models.</li>
+      to produce the reads, analyses and replies. It is not used to train AI models.</li>
   <li>Once each night the app sends your stored roster notes to Anthropic to refresh its
       summaries, whether or not you have the app open.</li>
   <li>We send venue searches and, with your permission, your coordinates to
       <strong>Google Places</strong> to find date spots.</li>
-  <li>The Playbook video lessons stream from us. We do not record which lessons you watch.</li>
   <li>The app contains no analytics, advertising, tracking or crash-reporting software.</li>
   <li>We do not sell or share your personal information.</li>
-  <li>Deleting your account erases your uploaded screenshots immediately and removes your
-      records from our database. See section 7.</li>
+  <li>Your data is stored in the United States and stays there.</li>
+  <li>Deleting your account erases your uploaded images immediately and your database records
+      within seven days. See section 7 for exactly what that means.</li>
   <li>The app is for adults 18 and over.</li>
 </ul>
 
@@ -72,30 +72,24 @@ identifier and email address that service returns. We also store a display name 
 <h3>Intake and profile</h3>
 <p>During onboarding we ask for and store: your date of birth, what you are looking for, your
 biggest challenge, dating experience, relationship status, current dating status, confidence
-level, where you meet women, your social disposition, and any free-text notes you add. We
-store your time zone and your subscription tier. Your date of birth is used to confirm you are
-18 or over and is kept on your profile.</p>
+level, where you meet people, your social disposition, and any free-text notes you add. We
+store your time zone and your subscription tier. Your date of birth is used to confirm you
+are 18 or over and is kept on your profile.</p>
 
 <h3>People you add</h3>
-<p>For each person on your roster we store the name you give them, your notes, an optional
-photo, a relationship stage and intent, and a computed confidence score along with its
-history. The app also builds and stores AI-generated notes, extracted facts, and a summary of
-that relationship. See section 5.</p>
+<p>For each person you add we store the name you give them, your notes, an optional photo, a
+relationship stage and intent, and a computed confidence score along with its history. The app
+also builds and stores AI-generated notes, extracted facts, and a summary of that relationship.
+See section 5.</p>
 
 <h3>Your conversations and uploads</h3>
-<p>We store the full text of your Advisor conversations, your Roleplay sessions with their
+<p>We store the full text of your Assistant conversations, your Roleplay sessions with their
 scores and improvement notes, your Concierge venue queries and the responses, screenshots you
-upload to Conversation Intel together with the resulting analysis, and any Clarity comparisons
-or reads you generate. We also store the daily briefs and challenges the app produces for you,
-and any feedback you submit.</p>
-
-<h3>The Playbook lessons</h3>
-<p>The Playbook video lessons are our own content and stream to you from our servers. We do
-not record which lessons you open, how far through one you are, or when you watched it. No
-viewing history is stored.</p>
+upload to Intel together with the resulting analysis, any comparisons or reads you generate,
+and the images and text you place on your Vision boards.</p>
 
 <h3>Usage</h3>
-<p>We count how many times you use metered features (Advisor sessions, Intel uploads,
+<p>We count how many times you use metered features (Assistant sessions, Intel uploads,
 Concierge lookups) so that plan limits can be enforced. We record whether you accepted the AI
 disclosure, and when.</p>
 
@@ -114,50 +108,50 @@ the feature that needs it.</p>
         <td>"We use your location to find great date spots near you."</td>
         <td>Your coordinates are sent to Google Places to rank venues by distance. We do not keep a location history.</td></tr>
     <tr><td>Camera</td>
-        <td>"Take a photo of a conversation to get instant Intel analysis."</td>
-        <td>Capturing an image to upload for Conversation Intel.</td></tr>
+        <td>"Take a photo of a conversation so Intel can tell you what it shows."</td>
+        <td>Capturing an image to upload to Intel.</td></tr>
     <tr><td>Photo library</td>
-        <td>"Upload screenshots of your conversations for Intel analysis."</td>
-        <td>Selecting screenshots to analyse. We access only the images you pick.</td></tr>
+        <td>"Your photo library is used for screenshots you send to Intel, and for pictures you add to your Vision boards."</td>
+        <td>Selecting images for Intel analysis or Vision boards. We access only the images you pick.</td></tr>
   </tbody>
 </table>
 
 <h2 id="storage">3. How your information is stored</h2>
 <p>Data is held in a hosted Supabase project — a Postgres database, authentication, and file
-storage.</p>
+storage — located in the <strong>us-west-1 (West US, North California)</strong> region. Your
+data is stored in the United States and is not transferred outside it.</p>
 <p>Every table carries row-level security, so a signed-in account can read and write only its
-own rows. Screenshots you upload live in a private storage bucket,
-<code>intel-screenshots</code>, which is not publicly readable and is keyed by your user ID
-under the same rules. The Playbook video lessons are served from a separate public bucket;
-that bucket holds our lesson content only and contains nothing belonging to you.</p>
+own rows. Uploaded images live in two private storage buckets, <code>intel-screenshots</code>
+and <code>vision-images</code>, which are not publicly readable and are keyed by your user ID
+under the same rules.</p>
 <p>Traffic between the app and our servers uses HTTPS. Calls to AI and venue services are made
 from our server-side functions, so provider API keys are never shipped inside the app.</p>
 
 <h2 id="ai">4. AI processing</h2>
-<p>The Gentlemen's Playbook uses a third-party AI provider, Anthropic (Claude), to power its
-coaching features.</p>
-<p>When you use Advisor, Concierge, Conversation Intel, or Roleplay, the content you share
-(including your messages, uploaded screenshots, notes, and roleplay conversations) is sent to
-Anthropic to generate coaching, analysis, and responses.</p>
+<p>The Lady's Choice uses a third-party AI provider, Anthropic (Claude). It reads what you
+share and writes what comes back.</p>
+<p>When you use the Assistant, Concierge, Intel, or Roleplay, the content you share — your
+messages, uploaded screenshots, notes, and roleplay conversations — is sent to Anthropic to
+produce the read, the analysis, or the reply.</p>
 <p>Separately, the app refreshes its summaries on a nightly schedule. At approximately 3:00 AM
 and 4:00 AM UTC each day, the notes, extracted facts and existing summaries held against the
 people on your roster are sent to Anthropic to be rewritten. This happens automatically,
 whether or not you have the app open.</p>
-<p>Your data is sent to Anthropic only to provide these features. It is not used to train AI
+<p>Your content goes to Anthropic only to make these features work. It is not used to train AI
 models.</p>
 <p>You are asked to agree to this before any content is sent. If you decline, the AI features
 do not run.</p>
 
 <h2 id="others">5. Information about other people</h2>
-<p>The app is built around recording information about people you know. When you add someone
-to your roster, write notes about them, upload a screenshot of a conversation with them, or
-generate an analysis, you are giving us personal information about a person who is not our
-user and who has not agreed to this policy.</p>
+<p>The app is built around recording information about people you know. When you add someone,
+write notes about them, upload a screenshot of a conversation with them, or generate an
+analysis, you are giving us personal information about a person who is not our user and who
+has not agreed to this policy.</p>
 <p>We handle that information exactly as we handle the rest of your data: it is private to
 your account, covered by the same access rules, sent to Anthropic as described in section 4,
 and destroyed when you remove the person or delete your account. We do not contact these
-people, build independent profiles of them, or use their information for anything outside your
-account.</p>
+people, build independent profiles of them, or use their information for anything outside
+your account.</p>
 <p>You are responsible for what you record about other people and for doing it lawfully. Do
 not upload someone else's private messages or images if you do not have the right to.</p>
 
@@ -170,7 +164,7 @@ not upload someone else's private messages or images if you do not have the righ
         <td>Hosting and storage.</td></tr>
     <tr><td>Anthropic (Claude)</td>
         <td>Your messages, uploaded screenshots, notes, roleplay conversations, and the names and notes held against people on your roster.</td>
-        <td>Generating coaching, analysis and responses.</td></tr>
+        <td>Generating reads, analyses and replies.</td></tr>
     <tr><td>Google Places</td>
         <td>Your venue search text and, if you grant location access, your coordinates.</td>
         <td>Finding and ranking date spots.</td></tr>
@@ -191,29 +185,37 @@ do not share it with anyone for advertising.</p>
 <h2 id="retention">7. Retention and deletion</h2>
 <p>We keep your information for as long as your account exists.</p>
 <p>You can delete your account at any time from Settings &rarr; Delete Account. Doing so runs a
-server-side deletion that, in order: removes every screenshot you uploaded from the private
-storage bucket, then deletes your authentication record, which cascades through the database
+server-side deletion that, in order: removes every image you uploaded from both private
+storage buckets, then deletes your authentication record, which cascades through the database
 and removes every row belonging to you — your profile and intake answers, everyone on your
-roster together with all notes, facts and summaries about them, your Advisor sessions and
+roster together with all notes, facts and summaries about them, your Assistant sessions and
 messages, Intel analyses, Roleplay sessions, Concierge queries, daily briefs and challenges,
-score history, Clarity comparisons and reads, usage counters, and feedback.</p>
-<p>Your uploaded screenshots are removed from storage first, and our storage buckets are
-excluded from database backups, so once they are deleted no copy of them remains in our
-systems. Your database rows are removed from the live database immediately and are no longer
-reachable by the app or by us through it. Routine encrypted backups of the database may
-continue to hold copies for a short rolling period before those snapshots age out and are
-overwritten.</p>
+score history, comparisons and reads, Vision boards and layers, usage counters, and feedback.</p>
+<p>Two details matter, and we would rather state them plainly than imply the erasure is more
+absolute than it is:</p>
+<ul>
+  <li><strong>Uploaded images are gone immediately.</strong> Our storage buckets are excluded
+      from backups, so once the deletion removes your Intel screenshots and Vision board
+      images there is no copy of them anywhere in our systems and they cannot be recovered,
+      by you or by us.</li>
+  <li><strong>Database records persist in backups for up to seven days.</strong> We take a
+      daily backup of the database and keep each one for seven days. We do not use
+      point-in-time recovery. Your rows are removed from the live database the moment you
+      delete your account and are no longer reachable by the app or by us through it, but
+      copies remain inside those rolling backup snapshots until the last snapshot taken before
+      your deletion ages out — at most seven days, after which no copy remains.</li>
+</ul>
 <p>Two further things sit outside our systems entirely. Content already sent to Anthropic or
-Google is governed by that provider's own retention, and deleting your account here does not
+Google is governed by that provider's own retention and deleting your account here does not
 reach into their systems. Records that Apple or RevenueCat hold about a purchase are kept by
 them for their own financial and legal purposes.</p>
 
 <h2 id="rights">8. Your rights</h2>
 <p>You can view and edit your profile and intake answers in the app, edit or delete any person
-on your roster and the notes attached to them, delete individual conversations and analyses,
-and delete your entire account and all its data. For anything you cannot do in the app —
-including a copy of your data in portable form — email us at the address in section 12 and we
-will respond within 30 days.</p>
+on your roster and the notes attached to them, delete individual conversations, analyses and
+Vision boards, and delete your entire account and all its data. For anything you cannot do in
+the app — including a copy of your data in portable form — email us at the address in section
+12 and we will respond within 30 days.</p>
 <p>Depending on where you live you may also have rights to access, correct, delete, or
 restrict processing of your personal information, and to complain to a data protection
 authority. We do not charge for exercising these rights and we will not treat you differently
@@ -225,8 +227,8 @@ for doing so.</p>
 display name); personal information under Cal. Civ. Code &sect;1798.80 (date of birth);
 commercial information (subscription tier and feature usage); geolocation data (only while you
 are using the venue finder, and only with your permission); audio, electronic and visual
-information (screenshots you upload); and inferences drawn from your own content (confidence
-scores and relationship summaries).</p>
+information (screenshots and images you upload); and inferences drawn from your own content
+(confidence scores and relationship summaries).</p>
 <p><strong>Sale or sharing.</strong> We do not sell personal information and we do not share
 it for cross-context behavioural advertising. We have not done so in the preceding twelve
 months.</p>
@@ -239,10 +241,10 @@ information through the app for their own purposes.</p>
 personal information at any time by signing in and opening Settings, or by emailing us.</p>
 
 <h2 id="children">10. Children</h2>
-<p>The Gentlemen's Playbook is for adults. You must be 18 or older to use it, and the app will
-not let you finish onboarding with a date of birth showing an age under 18. We do not
-knowingly collect personal information from anyone under 18. If you believe a minor has
-created an account, email us and we will delete it.</p>
+<p>The Lady's Choice is for adults. You must be 18 or older to use it, and the app will not
+let you finish onboarding with a date of birth showing an age under 18. We do not knowingly
+collect personal information from anyone under 18. If you believe a minor has created an
+account, email us and we will delete it.</p>
 
 <h2 id="changes">11. Changes to this policy</h2>
 <p>If we change this policy we will update the date at the top of this page. If a change
@@ -251,7 +253,7 @@ effect.</p>
 
 <h2 id="contact">12. Contact</h2>
 <p>Questions about this policy or your data:
-<a href="mailto:nicbell95@gmail.com">nicbell95@gmail.com</a></p>
+<a href="mailto:support@theladyschoice.com">support@theladyschoice.com</a></p>
 <p>Nicholas Bell</p>
 
 </body>
