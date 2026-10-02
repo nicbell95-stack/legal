@@ -22,7 +22,7 @@
 <body>
 
 <h1>Privacy Policy</h1>
-<p class="updated">The Gentlemen's Playbook — last updated September 22, 2026</p>
+<p class="updated">The Gentlemen's Playbook — last updated October 1, 2026</p>
 
 <p>This policy explains what The Gentlemen's Playbook ("the app") collects, where it goes, and
 how to get rid of it. It is written against what the app actually does rather than from a
@@ -34,10 +34,16 @@ template. The app is operated by Nicholas Bell ("we", "us").</p>
       about them, your Advisor conversations, and screenshots you upload for analysis.</li>
   <li>We use one AI provider, <strong>Anthropic (Claude)</strong>. Your content is sent to it
       to generate coaching, analysis and responses. It is not used to train AI models.</li>
+  <li>Photos you attach in Advisor and Concierge chats, outfit photos you send to What to Wear,
+      and screenshots of your own profile you send to Profile Analysis are sent to Anthropic
+      and are not stored on our servers.</li>
   <li>Once each night the app sends your stored roster notes to Anthropic to refresh its
       summaries, whether or not you have the app open.</li>
-  <li>We send venue searches and, with your permission, your coordinates to
-      <strong>Google Places</strong> to find date spots.</li>
+  <li>We send the venue searches you type (a city or zip code) to <strong>Google Places</strong>
+      to find date spots. Your device location is never sent to Google.</li>
+  <li>For an outfit check in What to Wear we send approximate coordinates (about 1 km) and the
+      date to <strong>Apple Weather</strong> for a forecast. With your permission the app also
+      uses Apple's on-device geocoder to name your city. We do not store your location.</li>
   <li>The Playbook video lessons stream from us. We do not record which lessons you watch.</li>
   <li>The app contains no analytics, advertising, tracking or crash-reporting software.</li>
   <li>We do not sell or share your personal information.</li>
@@ -88,6 +94,33 @@ scores and improvement notes, your Concierge venue queries and the responses, sc
 upload to Conversation Intel together with the resulting analysis, and any Clarity comparisons
 or reads you generate. We also store the daily briefs and challenges the app produces for you,
 and any feedback you submit.</p>
+<p>We also store the text results of your Profile Analysis reviews (the scores, findings and
+suggested rewrites, including the prompt answers the review quotes) so a new review can be
+compared with your last one, and short text notes summarising your past outfit checks in What
+to Wear (what you were visibly wearing and the verdict), which are used to personalise future
+outfit advice. Neither contains your photos or screenshots.</p>
+
+<h3>Photos you attach</h3>
+<p>Photos you attach in Advisor and Concierge chats are sent to Anthropic to generate the reply
+and are not stored on our servers; the conversation we store records only that a photo was
+attached. The Advisor keeps its copies on your device so they appear when you return to the
+conversation. Concierge holds photos only for the conversation in progress and does not save
+them.</p>
+<p>Outfit photos you send to What to Wear and screenshots of your own dating profile you send
+to Profile Analysis are sent to Anthropic for analysis and are not stored on our servers. If you
+continue a Profile Analysis review with the Advisor, those screenshots are kept on your device
+for that conversation.</p>
+
+<h3>Location and weather</h3>
+<p>When you use What to Wear with a date and a place, we send approximate coordinates (rounded
+to about 1 km) and the date to Apple Weather (WeatherKit) through our server, a Supabase edge
+function, and Apple returns a forecast. The place is the venue you picked, the city or zip
+code you typed, or, if you allow it, your device location. We do not store the coordinates or
+the forecast.</p>
+<p>If you allow device location, the app uses Apple's on-device geocoder (an Apple Maps
+service) to turn your coordinates into a city name for display, which sends the coordinates to
+Apple. Device location is used only for the weather forecast and that city label. It is never
+sent to Google, and we keep no location history.</p>
 
 <h3>The Playbook lessons</h3>
 <p>The Playbook video lessons are our own content and stream to you from our servers. We do
@@ -110,15 +143,15 @@ the feature that needs it.</p>
 <table>
   <thead><tr><th>Permission</th><th>What we tell you</th><th>What it is used for</th></tr></thead>
   <tbody>
-    <tr><td>Location (while in use)</td>
+    <tr><td>Location (optional, while in use)</td>
         <td>"We use your location to find great date spots near you."</td>
-        <td>Your coordinates are sent to Google Places to rank venues by distance. We do not keep a location history.</td></tr>
+        <td>The local weather forecast for outfit advice in What to Wear, and the city name shown with it (see section 1). It is not used for venue search and is not sent to Google. We do not keep a location history.</td></tr>
     <tr><td>Camera</td>
-        <td>"Take a photo of a conversation to get instant Intel analysis."</td>
-        <td>Capturing an image to upload for Conversation Intel.</td></tr>
+        <td>"GP uses your camera so you can get feedback on photos, like outfits or your dating profile."</td>
+        <td>Taking a photo to attach in Advisor and Concierge chats, including outfit checks.</td></tr>
     <tr><td>Photo library</td>
-        <td>"Upload screenshots of your conversations for Intel analysis."</td>
-        <td>Selecting screenshots to analyse. We access only the images you pick.</td></tr>
+        <td>"GP accesses your photos so you can attach images for feedback."</td>
+        <td>Attaching photos in chats, Profile Analysis and outfit checks, and selecting screenshots for Conversation Intel. We access only the images you pick.</td></tr>
   </tbody>
 </table>
 
@@ -130,15 +163,19 @@ own rows. Screenshots you upload live in a private storage bucket,
 <code>intel-screenshots</code>, which is not publicly readable and is keyed by your user ID
 under the same rules. The Playbook video lessons are served from a separate public bucket;
 that bucket holds our lesson content only and contains nothing belonging to you.</p>
-<p>Traffic between the app and our servers uses HTTPS. Calls to AI and venue services are made
-from our server-side functions, so provider API keys are never shipped inside the app.</p>
+<p>Traffic between the app and our servers uses HTTPS. Calls to AI, venue and weather services
+are made from our server-side functions, so provider API keys are never shipped inside the app.
+The exception is Apple's geocoder, which turns your device location into a city name: it runs
+on your device, as part of iOS. The Apple Weather logo shown next to a forecast is also loaded
+directly from Apple.</p>
 
 <h2 id="ai">4. AI processing</h2>
 <p>The Gentlemen's Playbook uses a third-party AI provider, Anthropic (Claude), to power its
 coaching features.</p>
-<p>When you use Advisor, Concierge, Conversation Intel, or Roleplay, the content you share
-(including your messages, uploaded screenshots, notes, and roleplay conversations) is sent to
-Anthropic to generate coaching, analysis, and responses.</p>
+<p>When you use Advisor, Concierge (including What to Wear), Conversation Intel, Profile
+Analysis, or Roleplay, the content you share (including your messages, photos you attach,
+uploaded screenshots, notes, and roleplay conversations) is sent to Anthropic to generate
+coaching, analysis, and responses.</p>
 <p>Separately, the app refreshes its summaries on a nightly schedule. At approximately 3:00 AM
 and 4:00 AM UTC each day, the notes, extracted facts and existing summaries held against the
 people on your roster are sent to Anthropic to be rewritten. This happens automatically,
@@ -169,17 +206,20 @@ not upload someone else's private messages or images if you do not have the righ
         <td>Everything described in section 1 — it hosts the database, authentication and image storage.</td>
         <td>Hosting and storage.</td></tr>
     <tr><td>Anthropic (Claude)</td>
-        <td>Your messages, uploaded screenshots, notes, roleplay conversations, and the names and notes held against people on your roster.</td>
+        <td>Your messages, photos you attach, uploaded screenshots, notes, roleplay conversations, and the names and notes held against people on your roster.</td>
         <td>Generating coaching, analysis and responses.</td></tr>
     <tr><td>Google Places</td>
-        <td>Your venue search text and, if you grant location access, your coordinates.</td>
-        <td>Finding and ranking date spots.</td></tr>
+        <td>Your venue search text (the city or zip code you type). Never your device location.</td>
+        <td>Finding and ranking date spots, and locating the city you typed for a weather forecast.</td></tr>
+    <tr><td>Apple Weather (WeatherKit)</td>
+        <td>Approximate coordinates (rounded to about 1 km) and the date, sent from our server. We do not store them or the forecast.</td>
+        <td>Weather forecast for outfit advice.</td></tr>
     <tr><td>Google Sign-In</td>
         <td>Sign-in identity, if you choose that method.</td>
         <td>Authentication.</td></tr>
     <tr><td>Apple</td>
-        <td>Sign-in identity if you use Sign in with Apple, and purchase records for anything you buy.</td>
-        <td>Authentication and payment. We never receive your payment card details.</td></tr>
+        <td>Sign-in identity if you use Sign in with Apple, and purchase records for anything you buy. If you allow device location, your coordinates, through Apple's on-device geocoder.</td>
+        <td>Authentication and payment (we never receive your payment card details), and naming your city for the weather forecast.</td></tr>
     <tr><td>RevenueCat</td>
         <td>Your account's unique identifier and your subscription status.</td>
         <td>Recognising paid subscriptions.</td></tr>
@@ -195,8 +235,10 @@ server-side deletion that, in order: removes every screenshot you uploaded from 
 storage bucket, then deletes your authentication record, which cascades through the database
 and removes every row belonging to you — your profile and intake answers, everyone on your
 roster together with all notes, facts and summaries about them, your Advisor sessions and
-messages, Intel analyses, Roleplay sessions, Concierge queries, daily briefs and challenges,
-score history, Clarity comparisons and reads, usage counters, and feedback.</p>
+messages, Intel analyses, Profile Analysis results, outfit-check notes, Roleplay sessions,
+Concierge queries, daily briefs and challenges, score history, Clarity comparisons and reads,
+usage counters, and feedback. Photos the Advisor kept on your device are deleted from the
+device at the same time.</p>
 <p>Your uploaded screenshots are removed from storage first, and our storage buckets are
 excluded from database backups, so once they are deleted no copy of them remains in our
 systems. Your database rows are removed from the live database immediately and are no longer
@@ -223,10 +265,10 @@ for doing so.</p>
 <p>Under the California Online Privacy Protection Act we disclose the following.</p>
 <p><strong>Categories collected.</strong> Identifiers (email address, account identifier,
 display name); personal information under Cal. Civ. Code &sect;1798.80 (date of birth);
-commercial information (subscription tier and feature usage); geolocation data (only while you
-are using the venue finder, and only with your permission); audio, electronic and visual
-information (screenshots you upload); and inferences drawn from your own content (confidence
-scores and relationship summaries).</p>
+commercial information (subscription tier and feature usage); geolocation data (approximate,
+only for a weather forecast in What to Wear, only with your permission, and not stored); audio,
+electronic and visual information (screenshots you upload); and inferences drawn from your own content (confidence
+scores, relationship summaries, Profile Analysis results and outfit-check notes).</p>
 <p><strong>Sale or sharing.</strong> We do not sell personal information and we do not share
 it for cross-context behavioural advertising. We have not done so in the preceding twelve
 months.</p>
